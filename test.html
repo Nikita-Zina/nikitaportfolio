@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NZ Design</title>
+</head>
+<style>
+  body {
+    background-color: #d86346;
+  }
+
+  #logo {
+    padding-left: 300px;
+  }
+
+  #text {
+    padding-left: 450px;
+
+  }
+
+  #contact {
+    padding-left: 1020px;
+    padding-bottom: -300px;
+    display: flex;
+    width: 20%;
+  }
+
+  #about {
+    padding-left: 950px;
+    padding-bottom: -300px;
+    display: flex;
+    text-align: left;
+  }
+
+  #container {
+    margin-top: -470px;
+    margin-left: 27%;
+    transform: translateX(-50%);
+  }
+
+  @media screen and (max-width: 440px) {
+
+    #text {
+      padding-left: 0;
+      width: 50px;
+      height: 50px;
+    }
+
+    #logo {
+      padding-top: 300px;
+      margin-left: -310px;
+    }
+
+    #about {
+      width: 40%;
+      margin-left: 40px;
+    }
+
+    #contact {
+      width: 100%;
+      margin-left: 0;
+    }
+
+    #container {
+      margin-left: -500px;
+      padding-top: 500px;
+    }
+
+    #text img {
+      width: 60px;
+      height: 100px;
+    }
+
+    #contact img {
+      width: 43%;
+      height: auto;
+      margin-left: -40px;
+    }
+
+  }
+</style>
+
+<body>
+  <div id="text">
+    <img src="text.png" alt="" style="width: 600px; height: 300px;">
+  </div>
+  <div id="logo">
+    <img src="resized.png" alt="" style="width: 400px; height: 550px;">
+  </div>
+  <div id="container">
+    <div id="about">
+      <a href="about.html">
+        <img src="about.png" alt="" style="width: 250px; height: 115px; transform: rotate(2deg);">
+      </a>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div id="contact">
+      <a href="contact.html">
+        <img src="contact.png" alt="" style="width: 100x; height: 100px; transform: rotate(-2deg);">
+      </a>
+    </div>
+  </div>
+</body>
+
+</html>
