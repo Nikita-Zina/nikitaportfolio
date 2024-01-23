@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Development Handbook</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css">
+</head>
+<style>
+  .fa-sign-in {
+    color: rgb(207, 229, 247);
+    padding-top: 900px;
+  }
+
+  #text-container {
+    font-size: 70px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+    padding-top: 30px;
+  }
+</style>
+
+<body>
+  <div id="text-container">Welcome to the web society...</div>
+  <br>
+  <a href="signup.html"> <i class="fa fa-sign-in fa-4x" aria-hidden="true" style="align-items: centre;"></i></a>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Get the text container
+      var textContainer = document.getElementById('text-container');
+
+      // Initial text
+      var initialText = 'Welcome to the web society...';
+
+      // Replacement text
+      var replacementText =
+        'This community is made to help people who interested in web development or any other types of creating tech stuff.';
+
+      // Set initial text
+      textContainer.innerText = initialText;
+
+      // After a delay, replace the text with the new one
+      setTimeout(function () {
+        // Fade out the current text
+        textContainer.style.opacity = 0;
+
+        // After the fade out animation, replace the text and fade it back in
+        setTimeout(function () {
+          textContainer.innerText = replacementText;
+          textContainer.style.opacity = 1;
+        }, 1000); // Adjust the delay as needed
+      }, 2000); // Adjust the delay as needed
+    });
+  </script>
+</body>
+
+</html>
