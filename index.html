@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery from API</title>
+    <style>
+      /* This is a css code made to create a visual part of the photo grid and aslo make a responsive design for it */
+        body {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #000000;
+        }
+ /* This bit of code used to create a responsive grid for the images */
+        .photo-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+ /* This bit of code used to create a border for each photo as well as a box showdow to make it looks prettier */
+        .photo-item {
+            background-color: #000000;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.6s ease-in-out;
+            position: relative; 
+        }
+/* This code will give an ability to show text only while hovering cursor on the photo to make the overall design light and clear */
+        .photo-item:hover {
+            transform: scale(1.05);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .title {
+            position: absolute; /* The absolute positioning is used for centering the text of the element */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Centre the text in the middle of the photo item */
+            opacity: 0; /* Make it hidden*/
+            background-color: rgba(179, 179, 179, 0.9);
+            padding: 10px;
+            text-align: center;
+            transition: opacity 0.3s ease-in-out; /* The very simple animation of the text appearing on hover */
+        }
+
+        .photo-item:hover .title {
+            opacity: 1; /* To make the text box visible on hover */
+        }
+    </style>
+</head>
+<body>
+    <!-- This is the main HTML part of the website that is used to create a grid -->
+    <div class="photo-container" id="photoContainer"></div>
+<!-- Here is a JavaScript code that will do all the backend functionality of the website -->
+    <script>
+        // I have used DOMContentLoaded to load the main API data and display it on the website once the page is loaded
+        document.addEventListener("DOMContentLoaded", function () {
+            // I have fetched data from the API and limited the output to 20 elements
+            fetch('https://jsonplaceholder.typicode.com/photos?_limit=20')
+                .then(response => response.json())
+                .then(data => displayPhotos(data)) // This line will help to display all the fetched elements from the API
+                .catch(error => console.error('Error fetching photos:', error)); // If the error will accure, the program will display the error message
+        });
+
+        // This code will help me to display the photos in the HTML grid
+        function displayPhotos(photos) {
+            const container = document.getElementById('photoContainer');
+
+            // This code will go through the first 20 photos from the API
+            photos.slice(0, 20).forEach(photo => {
+
+                // This will help me to separate each image and make it as a grid by adding div elements
+                const photoItem = document.createElement('div');
+                photoItem.classList.add('photo-item');
+
+                // This bit will create an image element and set its source and alt text
+                const image = document.createElement('img');
+                image.src = photo.url; // sets the source of an image
+      
+                // This bit creates the new div elements for the text which will go into the text box and will be easier to identify them
+                const title = document.createElement('div');
+                title.classList.add('title');
+                title.textContent = photo.title; // sets the title text
+                
+                // This code adds image elements and title elements to the photo item
+                photoItem.appendChild(image);
+                photoItem.appendChild(title);
+
+                // Adds photo item to the container element
+                container.appendChild(photoItem);
+            });
+        }
+    </script>
+</body>
+</html>
+<!-- This was the all code written to develop the website that will take first 20 items from the API and display them in the grid -->
+<!-- It tooks me around one day to figure out how to write the main functionality of it, I have used an open sources for self education in order to approach this task in the most efficient way -->
+<!-- It took me around 30 min to write HTML and CSS part for this website -->
